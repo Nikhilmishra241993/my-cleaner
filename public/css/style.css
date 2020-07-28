@@ -1,0 +1,382 @@
+@font-face {
+    font-family: 'Arial Rounded MT';
+    src: url('../fonts/ArialRoundedMT.woff2') format('woff2'),
+        url('../fonts/ArialRoundedMT.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arial Rounded MT';
+    src: url('../fonts/ArialRoundedMT-Light.woff2') format('woff2'),
+        url('../fonts/ArialRoundedMT-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arial Rounded MT';
+    src: url('../fonts/ArialRoundedMT-ExtraBold.woff2') format('woff2'),
+        url('../fonts/ArialRoundedMT-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+body{
+	
+  font-family: 'Arial Rounded MT';	
+	background-color: #f8f8f8;
+}
+ul{
+	list-style: none;
+	padding: 0;
+	margin: 0
+}
+a:hover{
+	text-decoration: none
+}
+.ptb100{
+	padding-top:100px;
+	padding-bottom: 100px;
+}
+h1 {
+    font-size: 75px;
+    line-height: 69px;
+    color: #84c642;
+    font-weight: 800;
+}
+h2 {
+    font-size: 48px;
+    color: #84c642;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 32px;
+    line-height: 40px;
+    color: #000000;
+    font-weight: 800;
+}
+h5 {
+    font-size: 24px;
+    line-height: 40px;
+    color: #399cfc;
+    font-weight: 800;
+}
+h6 {
+    font-size: 19px;
+    color: #939598;
+    font-family: "Verdana";
+    font-weight: 400;
+}
+
+p {
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+}
+
+/******Header-Start*****/
+.logo img {
+    width: 270px;
+}
+.menu-bar li {
+    margin-left: 45px;
+}
+.menu-bar li a {
+    font-size: 15px;
+    color: #399cfc;
+    font-weight: bold;
+}
+.login a {
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #84c542;
+    height: 45px;
+    display: inline-flex;
+    padding: 0px 35px;
+    border-radius: 31px;
+    line-height: 44px;
+    text-transform: uppercase;
+}
+.login a:hover{
+	background-color: #399cfc;
+	transition: all ease 0.5s;
+		
+}
+.login {
+    margin-left: 20px;
+}
+header {
+	background-color: #fff;
+    box-shadow: 0px 0px 9px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 99;
+}
+.menu-bar li a:hover {
+    color: #84c542;
+    transition: all ease 0.5s;
+}
+
+/*****Header-end******/
+
+/****Banner-Start******/
+.radio-slect {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+	 font-size: 18px;
+    line-height: 40px;
+    color: #212529;
+    font-weight: 800;
+}
+
+/* Hide the browser's default radio button */
+.radio-slect input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 9px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border-radius: 50%;
+	border: 1px solid #929497;
+}
+
+/* On mouse-over, add a grey background color */
+.radio-slect:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-slect input:checked ~ .checkmark {
+  background-color: #2196F3;
+  border: 1px solid #2196f3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-slect input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-slect .checkmark:after {
+ 	top: 5px;
+	left: 5px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+.banner-sec {
+    background-color: #f8f8f8;
+	position: relative
+}
+.bnr-cnt h1{
+    text-align: center;
+}
+.bnr-frm input {
+    border: 1px solid #a5a6a9;
+    background-color: transparent;
+    height: 40px;
+    padding-left: 20px;
+    font-size: 15px;
+    line-height: 40px;
+    color: #939598;
+    font-weight: 800;
+    border-radius: 4px;
+}
+.bnr-frm input {
+    border: 1px solid #a5a6a9;
+    background-color: transparent;
+    height: 40px;
+    padding-left: 14px;
+    font-size: 15px;
+    line-height: 40px;
+    color: #939598;
+    font-weight: 800;
+    border-radius: 4px;
+    width: 150px;
+    margin: 0px 5px;
+}
+input.width-big {
+    width: 320px !important;
+}
+.bnr-frm {
+    padding-top: 20px;
+}
+.pl110 {
+    padding-left: 110px;
+}
+.radio-select input {
+    display: none;
+}
+.btn-cnt {
+    text-align: center;
+    padding-top: 10px;
+}
+a.big-btn {
+    font-size: 23px;
+    line-height: 40px;
+    color: #ffffff;
+    font-weight: 800;
+    background-color: #399cfb;
+    height: 64px;
+    display: inline-flex;
+    line-height: 66px;
+    padding: 0px 100px;
+    border-radius: 50px;
+    margin-top: 21px;
+}
+.bnr-img img {
+    width: 450px;
+    margin-left: -130px;
+}
+
+/******Banner-end******/
+
+/*****Work-sec-start******/
+.work-dev {
+    background-color: #fff;
+	margin-top: 80px;
+}
+.work-icon img {
+    width: 140px;
+    margin-top: -60px;
+}
+.work-icon {
+    text-align: center;
+}
+.work-inr ul {
+    list-style: disc;
+    text-align: left;
+}
+.work-inr li {
+    font-size: 14px;
+    line-height: 40px;
+    color: #939598;
+    font-family: "Verdana";
+}
+.work-inr li {
+    font-size: 14px;
+    color: #939598;
+    font-family: "Verdana";
+    line-height: 21px;
+    padding-bottom: 9px;
+}
+.work-inr {
+    padding: 20px 30px 20px;
+}
+.work-inr h5{
+	padding-bottom: 20px;
+}
+.pb{
+	padding-bottom: 16px
+}
+.btn-sec {
+    margin-top: 40px;
+}
+
+/*****Work-sec-end******/
+
+/*****Happy-customer-start*******/
+.title p {
+    font-size: 18px;
+    color: #939598;
+    font-weight: 400;
+    font-family: "Verdana";
+}
+.clint-msg {
+    background-color: #fff;
+    text-align: center;
+    padding: 30px 40px;
+}
+.slick-slide.slick-cloned div:first-child {
+    margin: 0px 15px !important;
+}
+.slick-initialized .slick-slide {
+    display: block;
+    padding: 0px 13px;
+}
+.clint-msg li i {
+    color: #f8d939;
+    margin: 0px 2px;
+}
+.clint-msg li i {
+    color: #f8d939;
+    margin: 0px 2px;
+}
+.work-inr ul {
+    margin-left: 30px;
+}
+.clint-msg ul {
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.clint-msg p {
+    font-size: 14px;
+    color: #939598;
+    font-style: italic;
+    font-family: "Verdana";
+}
+.Clint-review {
+    padding-top: 60px;
+}
+
+/*****Happy-customer-end*******/
+
+
+
+/****Choose-us-Start******/
+.Choose-inr-sec ul {
+    margin-top: 30px;
+}
+.Choose-inr-sec li img {
+    width: 86px;
+}
+.choosecnt h6 {
+    font-size: 19px;
+    line-height: 28px;
+    color: #399cfc;
+    font-weight: bold;
+}
+.Choose-inr-sec li p {
+    font-size: 16px;
+    line-height: 19px;
+    color: #939598;
+    margin-bottom: 0;
+}
+.Choose-inr-sec li {
+    margin-bottom: 20px;
+}
+.choose-img img {
+    width: 73%;
+    float: right;
+}
+/*****Choose-us end*****/
