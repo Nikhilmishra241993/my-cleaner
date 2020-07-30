@@ -36,26 +36,26 @@
 			  
 			  <div class="bnr-frm">
 			    <h4>Book and pay securely online</h4>
-				    <input type="text" id="bedrooms" name = "bedrooms" placeholder="Bedrooms">
+				    <input type="text" id="bedrooms" class="fixPrice" name = "bedrooms" placeholder="Bedrooms" value="">
 				    
-				    <input type="text" id="living_rooms" name = "living_rooms" placeholder="Living rooms" value="">
+				    <input type="text" id="living_rooms" class="fixPrice" name = "living_rooms" placeholder="Living rooms" value="">
 				    
-				    <input type="text" id="bathrooms" name = "bathrooms" placeholder="Bathrooms" value="">
+				    <input type="text" id="bathrooms" class="fixPrice" name = "bathrooms" placeholder="Bathrooms" value="">
 				
 			  </div>
 			    <div class="bnr-frm">
 				   <h4>How often?</h4>
 					<div class="radio-select  d-flex justify-content-between">
 					<label class="radio-slect">Weekly
-					  <input type="radio" class="fixPrise"  name="radio" value="weekly" id="fix_price">
+					  <input type="radio" class="fixPrice howoften" checked = "checked" name="radio" value="weekly" id="fix_price">
 					  <span class="checkmark"></span>
 					</label>
 					<label class="radio-slect">Fortnightly
-					  <input type="radio"  class="fixPrise" name="radio" value="fortnightly" id="for_nightly">
+					  <input type="radio"  class="fixPrice howoften" name="radio" value="fortnightly" id="for_nightly">
 					  <span class="checkmark"></span>
 					</label>
 					<label class="radio-slect">Monthly
-					  <input type="radio"  class="fixPrise" name="radio" value="monthly" id="monthly">
+					  <input type="radio"  class="fixPrice howoften" name="radio" value="monthly" id="monthly">
 					  <span class="checkmark"></span>
 					</label>
 					</div>
@@ -63,7 +63,7 @@
 				</div>		    
              </form>
               <div class="btn-cnt">
-			     <h4>£  for <span id="Amount"></span> </h4> <h4 id="hrTime"> </h4>
+			     <h4>£  <span id="Amount"></span> </h4><h4>for</h4> <h4 id="hrTime"> </h4>
 				  <p>Choose tasks and hours when you book</p>
 				  <a href="#" class="big-btn">BOOK SECURELY ONLINE</a>
 			  </div>
@@ -337,7 +337,11 @@ your home that we’d be happy to have in ours.</p>
 		
 	$(document).ready(function(){
 		
+		var total_time = 0;
 		var total = '';
+		var week  = '';
+		var monthly  = '';
+		var nightly  = '';
 	$("#postcode").blur(function(){	
    
     var postcode = $(this).val();    
@@ -354,9 +358,12 @@ your home that we’d be happy to have in ours.</p>
 			var tot_bathrooms_cal = 30;
 			
 
-			var bedrooms_cal =  parseInt( res.areas.weekly_cru_cost ) + parseInt (res.areas.weekly_cleaner_cost);
-			var Totalnightly =  parseInt (res.areas.fortnightly_cru_cost ) + parseInt (res.areas.fortnightly_cleaner_cost);
-			var TotalMonthly =  parseInt (res.areas.monthly_cru_cost ) + parseInt (res.areas.monthly_cleaner_cost );
+		
+			var bedrooms_cal =  (parseInt (res.areas.weekly_cru_cost ) + parseInt (res.areas.weekly_cleaner_cost))/60 ;
+			var Totalnightly =  (parseInt (res.areas.fortnightly_cru_cost ) + parseInt (res.areas.fortnightly_cleaner_cost))/60;
+			var TotalMonthly =  (parseInt (res.areas.monthly_cru_cost ) + parseInt (res.areas.monthly_cleaner_cost ))/60;
+			
+			//alert(bedrooms_cal);
 			$('#fix_price').attr("data-value",bedrooms_cal);
 			$('#for_nightly').attr("data-value",Totalnightly);
 			$('#monthly').attr("data-value",TotalMonthly);
@@ -367,85 +374,103 @@ your home that we’d be happy to have in ours.</p>
 		//alert('wfd');
     }      
    });
+   
+   var bed_total = '';
   
-   $('#bedrooms').blur(function(){
-	 
+  
+   $('.fixPrice').change(function() {
+	   total_time = 0;
+	   
+	   //bedroom
+	   
+	   var bedrooms1 = parseInt($('#bedrooms').val());
+	
+			if(bedrooms1 <= 3 ){
+			
+				var time_bedroom = 10 * bedrooms1 + 45;
+				
+				total_time += time_bedroom;
+				
+			}else if(bedrooms1 >= 4){
+				
+				var time_bedroom = 10 * bedrooms1 + 75;
+			
+				total_time += time_bedroom;
+				
+			}
 	   
 	   
-	var bedrooms1 = 	$('#bedrooms').val();
-	var time_bedroom = bedrooms1 * 60;
-	
-	total_time = time_bedroom;
-	
-	total = 10 * bedrooms1;
-	});
-   
-   
-   $('#living_rooms').blur(function(){
+	   //end bedroom
 
-	var living_rooms1 = 	$('#living_rooms').val();
-	
-	var time_bedroom = living_rooms1 * 60;
-	
-	total_time = time_bedroom;
-	
-	
-	
-	total = 15 * living_rooms1;
-
-	});
-	
-   $('#bathrooms').blur(function(){
-
-	var bathrooms1 = 	$('#bathrooms').val();
-	var time_bedroom = bathrooms1 * 60;
-	
-	total_time = time_bedroom;
-	//alert(total_time);
-	
-	
-	total = 30 * bathrooms1;
-	console.log("bathrooms ==> ",bathrooms1, "total ==>",total);	
-	});
- 
-   
-  // $('#hrTime').val(time_bedroom);
-	
-  // alert("Outside",total);
-   $('.fixPrise').change(function() {
-    
-		var card_type =  $(this).val();
 		
-			console.log("Inside ==>",total);
-		if(card_type == 'weekly'){
-			bedrooms_cal = $(this).data("value");
-			var bedrooms_cal1 =	(bedrooms_cal + total)/60;
-			$('#Amount').text(parseFloat(bedrooms_cal1).toFixed(2));
+	   //living rooms
+	   
+	   
+	    var living_rooms1 = parseInt($('#living_rooms').val());
+	
+		var time_living_room = 15 * living_rooms1;
+		
+		total_time += time_living_room;
+	
+	   
+	   
+	   
+	   
+	   //end living rooms
+	   
+	   
+	   //bath room
+	   
+	   
+	   var bathrooms1 = parseInt($('#bathrooms').val());
+		//alert(bathrooms1);
+		var time_bathroom = 30 * bathrooms1;
+		
+		total_time +=  time_bathroom;
+	   
+	   
+	   //end bath room
+	   
+    
+		var howoften = $("input[name='radio']:checked").data("value");
+		//alert(howoften);
+		if(total_time < 120){
+			total_time = 120;
+		
+			var hours = (total_time / 60);
+			//alert(hours);
 			
-			var ttime = parseFloat(total_time).toFixed(2);
-			var totalTime = Math.floor(ttime / 60);
-			var min = totalTime % 60; 
-			$('#hrTime').text(totalTime +'hrs '+ min +'min');
-			//alert(bedrooms_cal1);
-		}else if(card_type == 'fortnightly'){
 			
-			bedrooms_cal = $(this).data("value");
-			var bedrooms_cal1 = (bedrooms_cal + total)/60;
-			$('#Amount').text(parseFloat(bedrooms_cal1).toFixed(2));
+			var rhours = Math.floor(hours);
+			var minutes = (hours - rhours) * 60;
+			var rminutes = Math.round(minutes);
 			
-			var ttime = parseFloat(total_time).toFixed(2);
-			var totalTime = Math.floor(ttime / 60);
-			var min = totalTime % 60; 
-			$('#hrTime').text(totalTime +'hrs '+ min +'min');
-		}else if(card_type == 'TotalMonthly'){
-			bedrooms_cal = $(this).data("value");
-			var bedrooms_cal1 = (bedrooms_cal + total)/60;
-			$('#Amount').text(parseFloat(bedrooms_cal1).toFixed(2));
-			var ttime = parseFloat(total_time).toFixed(2);
-			var totalTime = Math.floor(ttime / 60);
-			var min = totalTime % 60; 
-			$('#hrTime').text(totalTime +'hrs '+ min +'min'); 
-		}
+			 
+			$('#hrTime').text(rhours +'hrs '+ rminutes +'min'); 
+		}else{
+			
+			var hours = (total_time / 60);
+			//alert(hours);
+			
+			
+			var rhours = Math.floor(hours);
+			var minutes = (hours - rhours) * 60;
+			var rminutes = Math.round(minutes);
+			
+			 
+			$('#hrTime').text(rhours +'hrs '+ rminutes +'min'); 
+			
+		} 
+		//$('#hrTime').text(parseFloat(total_time).toFixed(2));
+		
+		
+
+		var final_price = parseFloat(howoften) * total_time;
+		
+		$('#Amount').text(parseFloat(final_price).toFixed(2));
+		
+	
+		
 
 	});
 
