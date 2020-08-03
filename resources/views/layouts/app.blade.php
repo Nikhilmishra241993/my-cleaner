@@ -21,6 +21,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/slick-theme.css') }}" rel="stylesheet">
     <link href="{{ asset('css/slick.css') }}" rel="stylesheet">
+	 
 </head>
 
 <body>

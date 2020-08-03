@@ -1,0 +1,38 @@
+@media screen and (max-width:1199px){
+	
+	.menu-bar li {
+		margin-left: 34px;
+	}
+	.menu-bar li a {
+		font-size: 14px;
+	}
+	
+}
+
+
+@media screen and (max-width:991px){
+	
+	
+}
+
+
+@media screen and (max-width:767px){
+	
+	
+}
+
+
+@media screen and (max-width:640px){
+	
+	
+}
+
+@media screen and (max-width:567px){
+	
+	
+}
+
+@media screen and (max-width:480px){
+	
+	
+}

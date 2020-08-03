@@ -24,4 +24,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/homePage', 'HomeController@homePage')->name('homePage');
 Route::get('postcodes','HomeController@postcodes');
 Route::get('postcodes-list','HomeController@getStateList');
+Route::get('/google_map','HomeController@google_map')->name('google_map');
 //Route::get('get-city-list','HomeController@getCityList');
